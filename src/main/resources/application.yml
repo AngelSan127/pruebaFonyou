@@ -1,0 +1,36 @@
+info:
+  project:
+    version: @project.version@
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  datasource:
+    platform: postgres
+    jdbc-url: jdbc:postgresql://localhost:5432/colegio
+    username: postgres
+    password: Colombia.2021
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 7000
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+
+springdoc:
+  swagger-ui:
+    disable-swagger-default-url: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /examen
+
+feign:
+  client:
+    config:
+      TCDAccountingClient:
+        connectTimeout: 30000
+        readTimeout: 30000
+        loggerLevel: basic
